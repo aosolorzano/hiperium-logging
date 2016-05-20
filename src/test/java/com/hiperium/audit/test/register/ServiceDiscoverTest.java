@@ -51,7 +51,7 @@ public class ServiceDiscoverTest {
 	 */
 	@Deployment(testable = false)
     public static WebArchive createDeployment() {
-        return ShrinkWrap.create(WebArchive.class, "audit-service-test.war").addClasses(
+        return ShrinkWrap.create(WebArchive.class, "logging-service-test.war").addClasses(
         		LoggingRestfulPath.class
         );
     }
@@ -61,7 +61,7 @@ public class ServiceDiscoverTest {
 	
 	private static final String ZK_HOST = "app.hiperium.com:2181";
 	public static final String SERVER_HOST = "app.hiperium.com";
-	public static final Integer SERVER_PORT = 8183;
+	public static final Integer SERVER_PORT = 8184;
 	
 	private CuratorFramework curatorClient;
 	private ServiceDiscovery<ServiceDetailsDTO> serviceDiscovery;
@@ -92,13 +92,13 @@ public class ServiceDiscoverTest {
     	LOGGER.info("queryService() - START");
     	String serviceURI = String.format("{scheme}://%s:{port}%s%s%s", 
     			SERVER_HOST,
-    			LoggingRestfulPath.AUDIT_CONTEXT_ROOT, 
-    			LoggingRestfulPath.AUDIT_PATH, 
+    			LoggingRestfulPath.LOGGING_CONTEXT_ROOT, 
+    			LoggingRestfulPath.LOGGING_PATH, 
     			LoggingRestfulPath.DEVICE_AUDIT.concat(LoggingRestfulPath.CREATE));
 		ServiceRegister server;
 		try {
 			// CURATOR CLIENT PART FOR REGISTERING SERVICES
-			server = new ServiceRegister(this.curatorClient, SERVER_PORT, serviceURI, LoggingRegistryPath.FIND_USER_STATISTIC_BY_USER_ID, 
+			server = new ServiceRegister(this.curatorClient, SERVER_PORT, serviceURI, LoggingRegistryPath.CREATE_DEVICE_AUDIT, 
 					LoggingRegistryPath.BASE_PATH, "Service that creates device audit register.", "1.0");
 			server.start();
 			this.registers.add(server);
@@ -111,9 +111,9 @@ public class ServiceDiscoverTest {
 					.basePath(LoggingRegistryPath.BASE_PATH)
 					.serializer(this.serializer)
 					.build();
-            final Collection<ServiceInstance<ServiceDetailsDTO>> services = this.serviceDiscovery.queryForInstances(LoggingRegistryPath.FIND_USER_STATISTIC_BY_USER_ID);
+            final Collection<ServiceInstance<ServiceDetailsDTO>> services = this.serviceDiscovery.queryForInstances(LoggingRegistryPath.CREATE_DEVICE_AUDIT);
             if(services == null || services.isEmpty()) {
-            	throw new Exception("No results found for querying services called: " + LoggingRegistryPath.FIND_USER_STATISTIC_BY_USER_ID);
+            	throw new Exception("No results found for querying services called: " + LoggingRegistryPath.CREATE_DEVICE_AUDIT);
             } else {
             	for(final ServiceInstance<ServiceDetailsDTO> service: services) {
                     final String uri = service.buildUriSpec();

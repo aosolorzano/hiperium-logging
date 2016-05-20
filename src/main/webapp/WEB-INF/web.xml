@@ -29,17 +29,17 @@
 	<!-- ACCESS CONTROL FILTERS -->
 	<filter>
 		<filter-name>CorsFilter</filter-name>
-		<filter-class>com.hiperium.audit.restful.filter.CorsFilter</filter-class>
+		<filter-class>com.hiperium.logging.restful.filter.CorsFilter</filter-class>
 		<async-supported>true</async-supported>
 	</filter>
 	<filter>
 		<filter-name>JsonpFilter</filter-name>
-		<filter-class>com.hiperium.audit.restful.filter.JsonpFilter</filter-class>
+		<filter-class>com.hiperium.logging.restful.filter.JsonpFilter</filter-class>
 		<async-supported>true</async-supported>
 	</filter>
 	<filter>
 		<filter-name>TokenFilter</filter-name>
-		<filter-class>com.hiperium.audit.restful.filter.TokenFilter</filter-class>
+		<filter-class>com.hiperium.logging.restful.filter.TokenFilter</filter-class>
 		<async-supported>true</async-supported>
 	</filter>
 	
