@@ -25,7 +25,7 @@ import javax.ws.rs.core.Response;
 
 import com.hiperium.commons.client.dto.DeviceDTO;
 import com.hiperium.commons.services.logger.HiperiumLogger;
-import com.hiperium.commons.services.restful.path.LoggingRestfulPath;
+import com.hiperium.commons.services.path.LoggingRestfulPath;
 import com.hiperium.logging.bo.module.DeviceAuditBO;
 import com.hiperium.logging.restful.generic.GenericREST;
 

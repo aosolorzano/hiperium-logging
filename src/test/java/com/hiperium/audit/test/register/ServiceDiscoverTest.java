@@ -35,7 +35,7 @@ import com.hiperium.commons.client.dto.ServiceDetailsDTO;
 import com.hiperium.commons.client.registry.ServiceRegister;
 import com.hiperium.commons.client.registry.path.LoggingRegistryPath;
 import com.hiperium.commons.services.logger.HiperiumLogger;
-import com.hiperium.commons.services.restful.path.LoggingRestfulPath;
+import com.hiperium.commons.services.path.LoggingRestfulPath;
 
 /**
  * 
