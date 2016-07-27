@@ -6,7 +6,7 @@ MAINTAINER "Andres Solorzano" andres.solorzano@hiperium.com
 ENV JBOSS_HOME /opt/jboss/wildfly
 
 # Copy hiperium service files into Wildfly
-COPY resources/standalone.xml $JBOSS_HOME/standalone/configuration/
+COPY opt/standalone.xml $JBOSS_HOME/standalone/configuration/
 COPY target/hiperium-logging.war $JBOSS_HOME/standalone/deployments/
 
 # Creates the wildlfy user administrator
